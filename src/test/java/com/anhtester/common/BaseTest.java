@@ -12,7 +12,7 @@ public class BaseTest {
 
     public WebDriver driver;
 
-    @BeforeMethod //Chạy trước mỗi @Test
+    //@BeforeMethod //Chạy trước mỗi @Test
     public void createBrowser(){
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         driver = new ChromeDriver();
@@ -21,7 +21,9 @@ public class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
     }
 
-    public void createBrowser(String browserName){
+    @BeforeMethod
+    @Parameters({"browser"})
+    public void createBrowser(@Optional("firefox") String browserName){
         System.setProperty("webdriver.http.factory", "jdk-http-client");
 
         if(browserName.equals("chrome")){
