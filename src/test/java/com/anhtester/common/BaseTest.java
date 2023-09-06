@@ -1,5 +1,6 @@
 package com.anhtester.common;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -54,6 +55,14 @@ public class BaseTest {
             throw new RuntimeException(e);
         }
         driver.quit();
+    }
+
+    public void clickElement(String locator){
+        driver.findElement(By.xpath(locator)).click();
+    }
+
+    public void setText(String locator, String text){
+        driver.findElement(By.xpath(locator)).sendKeys(text);
     }
 
     public void sleep(double second){
