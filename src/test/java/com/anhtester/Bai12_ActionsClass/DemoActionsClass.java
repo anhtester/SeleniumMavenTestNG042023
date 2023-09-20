@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class DemoActionsClass extends BaseTest {
     @Test
     public void TestPressEnterKey() {
@@ -30,6 +32,7 @@ public class DemoActionsClass extends BaseTest {
 
     @Test
     public void doubleClick() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://anhtester.com/");
         Thread.sleep(2000);
         WebElement element = driver.findElement(By.xpath("(//h2[@class='section__title'])[1]"));

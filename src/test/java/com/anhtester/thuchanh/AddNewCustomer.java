@@ -10,9 +10,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.time.Duration;
+
 public class AddNewCustomer extends BaseTest {
 
-    String COMPANY_NAME = "Selenium Java 04/2023 A5";
+    String COMPANY_NAME = "Selenium Java 04/2023 A6";
 
     public void loginCRM() {
         driver.get("https://crm.anhtester.com/admin/authentication");
@@ -78,6 +80,7 @@ public class AddNewCustomer extends BaseTest {
         softAssert.assertEquals(driver.findElement(By.xpath(LocatorCRM.inputWebsite)).getAttribute("value"), "https://anhtester.com", "Giá trị Website không đúng");
 
         softAssert.assertAll();
+
     }
 
     @Test(priority = 2)
