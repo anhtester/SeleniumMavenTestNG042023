@@ -7,6 +7,7 @@ public class LocatorCRM {
     public static String inputPassword = "//input[@id='password']";
     public static String buttonLogin = "//button[normalize-space()='Login']";
     public static String linkForgotPassword = "//a[normalize-space()='Forgot Password?']";
+    public static String alertMessage = "//div[@id='alerts']";
 
     //Dashboard
     public static String menuCustomers = "//span[normalize-space()='Customers']";
