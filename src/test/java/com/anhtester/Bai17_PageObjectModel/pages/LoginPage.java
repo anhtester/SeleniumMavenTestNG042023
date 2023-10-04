@@ -51,7 +51,7 @@ public class LoginPage {
     public void verifyLoginFail(){
         Assert.assertTrue(driver.getCurrentUrl().contains("authentication"), "FAIL. Không còn ở trang Login");
         Assert.assertTrue(driver.findElement(errorMessage).isDisplayed(), "Error message NOT displays");
-        Assert.assertEquals(driver.findElement(errorMessage).getText(), "123Invalid email or password", "Content of error massage NOT match.");
+        Assert.assertEquals(driver.findElement(errorMessage).getText(), "Invalid email or password", "Content of error massage NOT match.");
     }
 
     //Các hàm xử lý cho chính trang này
