@@ -26,8 +26,7 @@ public class BaseTest {
     public WebDriver driver;
 
     //@BeforeMethod //Chạy trước mỗi @Test
-    public void createBrowser(){
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
+    public void createBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -36,16 +35,14 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void createBrowser(@Optional("chrome") String browserName){
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-
-        if(browserName.equals("chrome")){
+    public void createBrowser(@Optional("chrome") String browserName) {
+        if (browserName.equals("chrome")) {
             driver = new ChromeDriver();
         }
-        if(browserName.equals("edge")){
+        if (browserName.equals("edge")) {
             driver = new EdgeDriver();
         }
-        if(browserName.equals("firefox")){
+        if (browserName.equals("firefox")) {
             driver = new FirefoxDriver();
         }
 
@@ -55,7 +52,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -64,20 +61,20 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void clickElement(String locator){
+    public void clickElement(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
         driver.findElement(By.xpath(locator)).click();
     }
 
-    public void setText(String locator, String text){
+    public void setText(String locator, String text) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
         driver.findElement(By.xpath(locator)).sendKeys(text);
     }
 
-    public String getTextElement(String locator){
+    public String getTextElement(String locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
         return driver.findElement(By.xpath(locator)).getText();
@@ -124,7 +121,7 @@ public class BaseTest {
         }
     }
 
-    public void sleep(double second){
+    public void sleep(double second) {
         try {
             Thread.sleep((long) (1000 * second));
         } catch (InterruptedException e) {

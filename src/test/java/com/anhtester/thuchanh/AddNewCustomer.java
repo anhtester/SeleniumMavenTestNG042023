@@ -1,16 +1,13 @@
 package com.anhtester.thuchanh;
 
 import com.anhtester.common.BaseTest;
-import com.anhtester.keywords.ActionKeywords;
+import com.anhtester.keywords.WebUI;
 import com.anhtester.locators.LocatorCRM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.time.Duration;
 
 public class AddNewCustomer extends BaseTest {
 
@@ -32,8 +29,8 @@ public class AddNewCustomer extends BaseTest {
     @Test(priority = 1)
     public void testAddNewCustomer() {
 
-        //Khởi tạo đối tượng class cho ActionKeywords để nhận giá trị driver
-        new ActionKeywords(driver);
+        //Khởi tạo đối tượng class cho WebUI để nhận giá trị driver
+        new WebUI(driver);
 
         loginCRM();
 
