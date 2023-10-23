@@ -30,7 +30,7 @@ public class AddNewCustomer extends BaseTest {
     public void testAddNewCustomer() {
 
         //Khởi tạo đối tượng class cho WebUI để nhận giá trị driver
-        new WebUI(driver);
+        //new WebUI(driver);
 
         loginCRM();
 

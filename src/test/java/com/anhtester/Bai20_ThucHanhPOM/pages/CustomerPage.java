@@ -50,7 +50,7 @@ public class CustomerPage {
     public CustomerPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        new WebUI(driver); //Bắt buộc khởi tạo để truyền driver vào
+        //new WebUI(driver); //Bắt buộc khởi tạo để truyền driver vào
     }
 
     public void verifyHeaderCustomerPage(){

@@ -52,10 +52,13 @@ public class DashboardPage {
     }
 
     public void verifyMenuReportDisplay(){
-        Assert.assertTrue(WebUI.checkElementExist(menuReports), "Menu Report not display.");
+        WebUI.waitForPageLoaded();
+        Assert.assertTrue(WebUI.checkElementExist(menuReports), "Menu Report not exist.");
+        Assert.assertTrue(driver.findElement(menuReports).isDisplayed(), "Menu Report not display.");
     }
 
     public void verifyMenuReportNotDisplay(){
+        WebUI.waitForPageLoaded();
         Assert.assertFalse(WebUI.checkElementExist(menuReports), "Menu Report is displayed.");
     }
 

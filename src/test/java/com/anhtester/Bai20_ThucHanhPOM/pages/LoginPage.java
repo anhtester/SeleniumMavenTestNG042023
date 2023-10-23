@@ -1,6 +1,7 @@
 package com.anhtester.Bai20_ThucHanhPOM.pages;
 
 import com.anhtester.constants.ConfigData;
+import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,21 +27,19 @@ public class LoginPage {
         this.driver = driver;
         //driver = _driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        new WebUI(driver); //Bắt buộc
     }
 
     private void setEmail(String email) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(inputEmail));
-        driver.findElement(inputEmail).sendKeys(email);
+        WebUI.setText(inputEmail, email);
     }
 
     private void setPassword(String password) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(inputPassword));
-        driver.findElement(inputPassword).sendKeys(password);
+        WebUI.setText(inputPassword,password);
     }
 
     private void clickLoginButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonLogin));
-        driver.findElement(buttonLogin).click();
+        WebUI.clickElement(buttonLogin);
     }
 
     public void verifyLoginSuccess(){
@@ -50,12 +49,13 @@ public class LoginPage {
     public void verifyLoginFail(){
         Assert.assertTrue(driver.getCurrentUrl().contains("authentication"), "FAIL. Không còn ở trang Login");
         Assert.assertTrue(driver.findElement(errorMessage).isDisplayed(), "Error message NOT displays");
-        Assert.assertEquals(driver.findElement(errorMessage).getText(), "Invalid email or password", "Content of error massage NOT match.");
+        Assert.assertEquals(WebUI.getElementText(errorMessage), "Invalid email or password", "Content of error massage NOT match.");
     }
 
     //Các hàm xử lý cho chính trang này
     public DashboardPage loginCRM(String email, String password) {
-        driver.get(ConfigData.URL);
+        WebUI.openURL(ConfigData.URL);
+        WebUI.waitForPageLoaded();
         setEmail(email);
         setPassword(password);
         clickLoginButton();
