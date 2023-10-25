@@ -49,18 +49,18 @@ public class CustomerPage {
 
     public CustomerPage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //new WebUI(driver); //Bắt buộc khởi tạo để truyền driver vào
+        //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        new WebUI(driver); //Bắt buộc khởi tạo để truyền driver vào
     }
 
     public void verifyHeaderCustomerPage(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(headerCustomerPage));
-        Assert.assertTrue(driver.findElement(headerCustomerPage).isDisplayed(), "Header Customer page not display.");
-        Assert.assertEquals(driver.findElement(headerCustomerPage).getText(), headerText, "Content of header customer page not match.");
+        WebUI.waitForElementVisible(headerCustomerPage);
+        Assert.assertTrue(WebUI.checkElementDisplayed(headerCustomerPage), "Header Customer page not display.");
+        Assert.assertEquals(WebUI.getElementText(headerCustomerPage), headerText, "Content of header customer page not match.");
     }
 
     public void clickButtonAddNew(){
-        driver.findElement(buttonAddNewCustomer).click();
+        WebUI.clickElement(buttonAddNewCustomer);
     }
 
     public void inputFormData(String COMPANY_NAME){
@@ -72,7 +72,7 @@ public class CustomerPage {
         WebUI.sleep(1);
         WebUI.setText(inputSearchGroup, "VIP");
         WebUI.sleep(1);
-        driver.findElement(inputSearchGroup).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputSearchGroup, Keys.ENTER);
         WebUI.clickElement(dropdownGroups);
         WebUI.setText(inputAddress, "O Mon");
         WebUI.setText(inputCity, "Can Tho");
@@ -82,24 +82,24 @@ public class CustomerPage {
         WebUI.sleep(1);
         WebUI.setText(inputSearchCountry, "Vietnam");
         WebUI.sleep(1);
-        driver.findElement(inputSearchCountry).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputSearchCountry, Keys.ENTER);
         WebUI.clickElement(buttonSaveCustomer);
     }
 
     public void searchAndVerifyCustomer(String COMPANY_NAME){
-        driver.findElement(By.xpath(LocatorCRM.menuCustomers)).click();
-        driver.findElement(By.xpath(LocatorCRM.inputSearchCustomers)).sendKeys(COMPANY_NAME);
+        WebUI.clickElement(By.xpath(LocatorCRM.menuCustomers));
+        WebUI.setText(By.xpath(LocatorCRM.inputSearchCustomers), COMPANY_NAME);
         WebUI.sleep(2);
         Assert.assertTrue(WebUI.checkElementExist(firstItemCustomerOnTable), "Không tìm thấy Customer.");
     }
 
     public void verifyCustomerDetail(String COMPANY_NAME){
         SoftAssert softAssert = new SoftAssert();
-        driver.findElement(By.xpath(LocatorCRM.firstItemCustomerOnTable)).click();
-        softAssert.assertEquals(driver.findElement(inputCompanyName).getAttribute("value"), COMPANY_NAME, "Giá trị Tên Company không đúng");
-        softAssert.assertEquals(driver.findElement(inputVatNumber).getAttribute("value"), "10", "Giá trị VAT không đúng");
-        softAssert.assertEquals(driver.findElement(inputPhone).getAttribute("value"), "123456", "Giá trị Phone không đúng");
-        softAssert.assertEquals(driver.findElement(inputWebsite).getAttribute("value"), "https://anhtester.com", "Giá trị Website không đúng");
+        WebUI.clickElement(By.xpath(LocatorCRM.firstItemCustomerOnTable));
+        softAssert.assertEquals(WebUI.getElementAttribute(inputCompanyName, "value"), COMPANY_NAME, "Giá trị Tên Company không đúng");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputVatNumber, "value"), "10", "Giá trị VAT không đúng");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputPhone, "value"), "123456", "Giá trị Phone không đúng");
+        softAssert.assertEquals(WebUI.getElementAttribute(inputWebsite, "value"), "https://anhtester.com", "Giá trị Website không đúng");
 
         softAssert.assertAll();
     }

@@ -24,7 +24,7 @@ public class CustomerTest extends BaseTest {
 
         customerPage.clickButtonAddNew();
 
-        String CUSTOMER_NAME = "FPT Software A5";
+        String CUSTOMER_NAME = "FPT Software A6";
         customerPage.inputFormData(CUSTOMER_NAME); //Add new and Save
         customerPage.searchAndVerifyCustomer(CUSTOMER_NAME); //Search and Verify on table
         customerPage.verifyCustomerDetail(CUSTOMER_NAME); //Verify Detail
