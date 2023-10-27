@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteCustomer" verbose="1">
+
+    <parameter name="browser" value="chrome"></parameter>
+
+    <test name="CustomerTest">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="com.anhtester.Bai20_ThucHanhPOM.testcases.CustomerTest"></class>
+        </classes>
+    </test>
+
+    <test name="LoginTest">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.anhtester.Bai20_ThucHanhPOM.testcases.LoginTest"></class>
+        </classes>
+    </test>
+</suite>

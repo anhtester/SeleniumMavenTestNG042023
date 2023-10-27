@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="1">
+
+    <test name="Test">
+
+        <parameter name="number1" value="20"></parameter>
+        <parameter name="number3" value="14"></parameter>
+
+        <classes>
+            <class name="com.anhtester.Bai24_Parameters_MultiBrowser.DemoParameters"></class>
+            <!-- <class name="com.anhtester.Bai24_Parameters_MultiBrowser.DemoParameters2"></class>-->
+        </classes>
+    </test>
+</suite>
