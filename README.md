@@ -1,9 +1,10 @@
 ## ♻️ Selenium Java Maven + TestNG Framework 04/2023
+
 Project learning Selenium TestNG Framework with Maven project for class 04/2023
 
 Source code Selenium Maven từ bài 5 đến bài 9: https://github.com/anhtester/SeleniumMaven042023
 
-
+***🔥 Lưu ý: nhớ cập nhật thư viện trong pom.xml phiên bản mới nhất***
 
 🔅 Khoá học Selenium WebDriver with Java Basic to Advanced | Anh Tester
 
